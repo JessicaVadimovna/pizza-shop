@@ -1,38 +1,902 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh; /* Минимальная высота на весь экран */
+  background-color: #1a1a1a;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  flex: 1; /* Основной контент растягивается, чтобы футер был внизу */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Уведомление об успешном заказе или ошибке */
+.order-success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ff8c38;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #2a2a2a;
+  height: 80px; /* Фиксированная высота для стабильности */
+  width: 100%;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff8c38;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: #ff8c38;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.login-btn {
+  padding: 8px 16px;
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.cart-btn {
+  position: relative; /* Для позиционирования счетчика */
+  padding: 8px 16px;
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: white;
+  color: #ff8c38;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  background-color: #2a2a2a;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.order-btn, .menu-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.order-btn {
+  background-color: #ff8c38;
+  color: white;
+}
+
+.menu-btn {
+  background-color: transparent;
+  border: 2px solid #ff8c38;
+  color: #ff8c38;
+}
+
+.hero-image .hero-image-pizza {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  border-radius: 50%;
+}
+
+/* Menu */
+.menu {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.menu h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.menu-tabs button {
+  padding: 8px 16px;
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-tabs button.active {
+  background-color: white;
+  color: #ff8c38;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); /* Фиксированная ширина карточек */
+  gap: 30px;
+  justify-content: center; /* Центрирование карточек */
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Кнопка всегда внизу */
+  background-color: #2a2a2a;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: left;
+  transition: transform 0.3s ease;
+  max-width: 300px; /* Ограничиваем ширину карточки */
+  height: 100%; /* Карточка растягивается по высоте */
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+.menu-item-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+}
+
+.menu-item h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.menu-item p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Текст растягивается, чтобы кнопка была внизу */
+}
+
+.price {
+  color: #ff8c38;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.menu-item button {
+  padding: 10px 20px;
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease; /* Плавный переход для всех эффектов */
+}
+
+.menu-item button:hover {
+  background-color: #e07b00; /* Более тёмный оттенок при наведении */
+  transform: scale(1.05); /* Лёгкое увеличение */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+  color: #fff; /* Цвет текста остаётся белым */
+}
+
+/* Popular Pizza */
+.popular-pizza {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.popular-pizza h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.popular-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px)); /* Фиксированная ширина карточек */
+  gap: 20px;
+  justify-content: center; /* Центрирование карточек */
+}
+
+.popular-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Кнопка всегда внизу */
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  transition: transform 0.3s ease;
+  max-width: 250px; /* Ограничиваем ширину карточки */
+  height: 100%; /* Карточка растягивается по высоте */
+}
+
+.popular-item:hover {
+  transform: scale(1.05);
+}
+
+.popular-item-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+}
+
+.popular-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.popular-item p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Текст растягивается, чтобы кнопка была внизу */
+}
+
+.popular-item button {
+  padding: 8px 16px;
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Плавный переход для всех эффектов */
+}
+
+.popular-item button:hover {
+  background-color: #e07b00; /* Более тёмный оттенок при наведении */
+  transform: scale(1.05); /* Лёгкое увеличение */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+  color: #fff; /* Цвет текста остаётся белым */
+}
+
+/* Events */
+.events {
+  padding: 60px 40px;
+}
+
+.events h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.events-subtitle {
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.event-item {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.event-item:hover {
+  transform: scale(1.05);
+}
+
+.event-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+}
+
+.event-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.event-item p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* About Us */
+.about-us {
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-us h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-text {
+  max-width: 50%;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  border-radius: 10px;
+  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+}
+
+/* Footer */
+.footer {
+  padding: 40px;
+  background-color: #2a2a2a;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.footer-links h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #ff8c38;
+}
+
+.footer p {
+  color: #ccc;
+}
+
+/* Modal (Cart and Auth) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.cart-items {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.cart-items button {
+  background-color: #ff4d4d;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-content form div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.modal-content label {
+  margin-bottom: 5px;
+}
+
+.modal-content input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-content button {
+  padding: 8px 16px;
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.switch-auth-mode {
+  background: none;
+  border: none;
+  color: #ff8c38;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .buttons {
+    gap: 5px;
+  }
+
+  .login-btn, .cart-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-image .hero-image-pizza {
+    width: 200px;
+    height: 200px;
+  }
+
+  .menu {
+    padding: 30px 20px;
+  }
+
+  .menu h2 {
+    font-size: 28px;
+  }
+
+  .menu-tabs {
+    gap: 5px;
+  }
+
+  .menu-tabs button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .menu-items {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px)); /* Фиксированная ширина карточек */
+    gap: 20px;
+  }
+
+  .menu-item {
+    padding: 20px;
+    max-width: 250px; /* Уменьшаем максимальную ширину */
+  }
+
+  .menu-item-image {
+    height: 150px;
+  }
+
+  .menu-item h3 {
+    font-size: 20px;
+  }
+
+  .menu-item p {
+    font-size: 14px;
+  }
+
+  .menu-item .price {
+    font-size: 16px;
+  }
+
+  .menu-item button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .popular-pizza {
+    padding: 30px 20px;
+  }
+
+  .popular-pizza h2 {
+    font-size: 28px;
+  }
+
+  .popular-items {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px)); /* Фиксированная ширина карточек */
+    gap: 15px;
+  }
+
+  .popular-item {
+    padding: 15px;
+    max-width: 200px; /* Уменьшаем максимальную ширину */
+  }
+
+  .popular-item-image {
+    height: 120px;
+  }
+
+  .popular-item h3 {
+    font-size: 18px;
+  }
+
+  .popular-item p {
+    font-size: 12px;
+  }
+
+  .popular-item button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .events {
+    padding: 30px 20px;
+  }
+
+  .events h2 {
+    font-size: 28px;
+  }
+
+  .events-subtitle {
+    font-size: 14px;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .event-item {
+    padding: 15px;
+  }
+
+  .event-image {
+    height: 120px;
+  }
+
+  .event-item h3 {
+    font-size: 18px;
+  }
+
+  .event-item p {
+    font-size: 12px;
+  }
+
+  .about-us {
+    padding: 30px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-us h2 {
+    font-size: 28px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-text p {
+    font-size: 14px;
+  }
+
+  .about-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-links h4 {
+    font-size: 16px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .login-btn, .cart-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .order-btn, .menu-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .menu h2 {
+    font-size: 24px;
+  }
+
+  .menu-tabs button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .menu-items {
+    grid-template-columns: 1fr; /* Одна колонка на очень маленьких экранах */
+    gap: 15px;
+  }
+
+  .menu-item {
+    padding: 15px;
+    max-width: 100%; /* Карточка занимает всю ширину контейнера */
+  }
+
+  .menu-item-image {
+    height: 120px;
+  }
+
+  .menu-item h3 {
+    font-size: 18px;
+  }
+
+  .menu-item p {
+    font-size: 12px;
+  }
+
+  .menu-item .price {
+    font-size: 14px;
+  }
+
+  .menu-item button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .popular-pizza h2 {
+    font-size: 24px;
+  }
+
+  .popular-items {
+    grid-template-columns: 1fr; /* Одна колонка на очень маленьких экранах */
+    gap: 10px;
+  }
+
+  .popular-item {
+    padding: 10px;
+    max-width: 100%; /* Карточка занимает всю ширину контейнера */
+  }
+
+  .popular-item-image {
+    height: 100px;
+  }
+
+  .popular-item h3 {
+    font-size: 16px;
+  }
+
+  .popular-item p {
+    font-size: 10px;
+  }
+
+  .popular-item button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .events h2 {
+    font-size: 24px;
+  }
+
+  .events-subtitle {
+    font-size: 12px;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .event-item {
+    padding: 10px;
+  }
+
+  .event-image {
+    height: 100px;
+  }
+
+  .event-item h3 {
+    font-size: 16px;
+  }
+
+  .event-item p {
+    font-size: 10px;
+  }
+
+  .about-us h2 {
+    font-size: 24px;
+  }
+
+  .about-text p {
+    font-size: 12px;
+  }
+
+  .about-image {
+    width: 150px;
+    height: 150px;
   }
 }
