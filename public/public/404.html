@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+      const pathSegments = window.location.pathname
+        .split("/")
+        .filter((segment) => segment);
+      const basePath = pathSegments[0]; // Предполагается, что это имя репозитория
+      const redirectPath = `/${basePath}/index.html${window.location.search}${window.location.hash}`;
+      window.location.replace(redirectPath);
+    </script>
+  </head>
+  <body></body>
+</html>
