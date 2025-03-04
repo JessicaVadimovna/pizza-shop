@@ -11,13 +11,13 @@ body {
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Минимальная высота на весь экран */
+  min-height: 100vh; 
   background-color: #1a1a1a;
   color: white;
 }
 
 .main-content {
-  flex: 1; /* Основной контент растягивается, чтобы футер был внизу */
+  flex: 1; 
 }
 
 /* Уведомление об успешном заказе или ошибке */
@@ -39,7 +39,7 @@ body {
   align-items: center;
   padding: 20px 40px;
   background-color: #2a2a2a;
-  height: 80px; /* Фиксированная высота для стабильности */
+  height: 80px; 
   width: 100%;
 }
 
@@ -80,7 +80,7 @@ nav a:hover {
 }
 
 .cart-btn {
-  position: relative; /* Для позиционирования счетчика */
+  position: relative; 
   padding: 8px 16px;
   background-color: #ff8c38;
   border: none;
@@ -147,7 +147,7 @@ nav a:hover {
 .hero-image .hero-image-pizza {
   width: 300px;
   height: 300px;
-  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  object-fit: cover; 
   border-radius: 50%;
 }
 
@@ -186,22 +186,22 @@ nav a:hover {
 
 .menu-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); /* Фиксированная ширина карточек */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); 
   gap: 30px;
-  justify-content: center; /* Центрирование карточек */
+  justify-content: center; 
 }
 
 .menu-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Кнопка всегда внизу */
+  justify-content: space-between; 
   background-color: #2a2a2a;
   padding: 30px;
   border-radius: 10px;
   text-align: left;
   transition: transform 0.3s ease;
-  max-width: 300px; /* Ограничиваем ширину карточки */
-  height: 100%; /* Карточка растягивается по высоте */
+  max-width: 300px; 
+  height: 100%; 
 }
 
 .menu-item:hover {
@@ -211,10 +211,10 @@ nav a:hover {
 .menu-item-image {
   width: 100%;
   height: 200px;
-  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  object-fit: cover; 
   border-radius: 10px;
   margin-bottom: 15px;
-  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+  background-color: #ccc; 
 }
 
 .menu-item h3 {
@@ -226,7 +226,7 @@ nav a:hover {
   font-size: 16px;
   color: #ccc;
   margin-bottom: 10px;
-  flex-grow: 1; /* Текст растягивается, чтобы кнопка была внизу */
+  flex-grow: 1; 
 }
 
 .price {
@@ -243,14 +243,14 @@ nav a:hover {
   color: white;
   cursor: pointer;
   font-size: 16px;
-  transition: all 0.3s ease; /* Плавный переход для всех эффектов */
+  transition: all 0.3s ease; 
 }
 
 .menu-item button:hover {
-  background-color: #e07b00; /* Более тёмный оттенок при наведении */
-  transform: scale(1.05); /* Лёгкое увеличение */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
-  color: #fff; /* Цвет текста остаётся белым */
+  background-color: #e07b00; 
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  color: #fff; 
 }
 
 /* Popular Pizza */
@@ -266,22 +266,22 @@ nav a:hover {
 
 .popular-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 250px)); /* Фиксированная ширина карточек */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
   gap: 20px;
-  justify-content: center; /* Центрирование карточек */
+  justify-content: center; 
 }
 
 .popular-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Кнопка всегда внизу */
+  justify-content: space-between; 
   background-color: #2a2a2a;
   padding: 20px;
   border-radius: 10px;
   text-align: left;
   transition: transform 0.3s ease;
-  max-width: 250px; /* Ограничиваем ширину карточки */
-  height: 100%; /* Карточка растягивается по высоте */
+  max-width: 250px; 
+  height: 100%; 
 }
 
 .popular-item:hover {
@@ -291,10 +291,10 @@ nav a:hover {
 .popular-item-image {
   width: 100%;
   height: 150px;
-  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+  background-color: #ccc; 
 }
 
 .popular-item h3 {
@@ -306,7 +306,7 @@ nav a:hover {
   font-size: 14px;
   color: #ccc;
   margin-bottom: 10px;
-  flex-grow: 1; /* Текст растягивается, чтобы кнопка была внизу */
+  flex-grow: 1; 
 }
 
 .popular-item button {
@@ -316,14 +316,14 @@ nav a:hover {
   border-radius: 20px;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease; /* Плавный переход для всех эффектов */
+  transition: all 0.3s ease;
 }
 
 .popular-item button:hover {
-  background-color: #e07b00; /* Более тёмный оттенок при наведении */
-  transform: scale(1.05); /* Лёгкое увеличение */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
-  color: #fff; /* Цвет текста остаётся белым */
+  background-color: #e07b00; 
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  color: #fff; 
 }
 
 /* Events */
@@ -363,10 +363,10 @@ nav a:hover {
 .event-image {
   width: 100%;
   height: 150px;
-  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  object-fit: cover; 
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+  background-color: #ccc; 
 }
 
 .event-item h3 {
@@ -412,9 +412,9 @@ nav a:hover {
 .about-image {
   width: 300px;
   height: 300px;
-  object-fit: cover; /* Чтобы изображение заполняло область, не искажаясь */
+  object-fit: cover; 
   border-radius: 10px;
-  background-color: #ccc; /* Запасной фон на случай, если изображение не загрузится */
+  background-color: #ccc; 
 }
 
 /* Footer */
@@ -612,13 +612,13 @@ nav a:hover {
   }
 
   .menu-items {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 250px)); /* Фиксированная ширина карточек */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
     gap: 20px;
   }
 
   .menu-item {
     padding: 20px;
-    max-width: 250px; /* Уменьшаем максимальную ширину */
+    max-width: 250px; 
   }
 
   .menu-item-image {
@@ -651,13 +651,13 @@ nav a:hover {
   }
 
   .popular-items {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 200px)); /* Фиксированная ширина карточек */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px)); 
     gap: 15px;
   }
 
   .popular-item {
     padding: 15px;
-    max-width: 200px; /* Уменьшаем максимальную ширину */
+    max-width: 200px; 
   }
 
   .popular-item-image {
@@ -797,13 +797,13 @@ nav a:hover {
   }
 
   .menu-items {
-    grid-template-columns: 1fr; /* Одна колонка на очень маленьких экранах */
+    grid-template-columns: 1fr; 
     gap: 15px;
   }
 
   .menu-item {
     padding: 15px;
-    max-width: 100%; /* Карточка занимает всю ширину контейнера */
+    max-width: 100%; 
   }
 
   .menu-item-image {
@@ -832,13 +832,13 @@ nav a:hover {
   }
 
   .popular-items {
-    grid-template-columns: 1fr; /* Одна колонка на очень маленьких экранах */
+    grid-template-columns: 1fr; 
     gap: 10px;
   }
 
   .popular-item {
     padding: 10px;
-    max-width: 100%; /* Карточка занимает всю ширину контейнера */
+    max-width: 100%; 
   }
 
   .popular-item-image {
