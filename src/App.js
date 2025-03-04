@@ -197,7 +197,7 @@ function Hero({ placeOrder }) {
         animate={{ scale: 1 }}
         transition={{ delay: 0.5, type: 'spring', stiffness: 120 }}
       >
-        <img src="/img/master-pizza-chef.png" alt="Hero Pizza" className="hero-image-pizza" />
+        <img src="./img/master-pizza-chef.png" alt="Hero Pizza" className="hero-image-pizza" />
       </motion.div>
     </motion.section>
   );
@@ -270,10 +270,10 @@ function Menu({ addToCart }) {
 
 function PopularPizza({ addToCart }) {
   const popularItems = [
-    { name: 'Argentina', price: '7.35$', ingredients: 'Filing: Argentina, tomato, mushrooms', category: 'Meat', image: '/img/argentina-pizza.png' },
-    { name: 'Gribaya', price: '6.35$', ingredients: 'Filing: tomato, mushrooms', category: 'Mushroom', image: '/img/gribaya-pizza.png' },
-    { name: 'Tomato', price: '7.35$', ingredients: 'Filing: tomato, mushrooms', category: 'Vegetarian', image: '/img/tomato-pizza.png' },
-    { name: 'Italian x2', price: '8.35$', ingredients: 'Filing: Italian, cheese, mushrooms', category: 'Meat', image: '/img/italian-x2-pizza.png' },
+    { name: 'Argentina', price: '7.35$', ingredients: 'Filing: Argentina, tomato, mushrooms', category: 'Meat', image: './img/argentina-pizza.png' },
+    { name: 'Gribaya', price: '6.35$', ingredients: 'Filing: tomato, mushrooms', category: 'Mushroom', image: './img/gribaya-pizza.png' },
+    { name: 'Tomato', price: '7.35$', ingredients: 'Filing: tomato, mushrooms', category: 'Vegetarian', image: './img/tomato-pizza.png' },
+    { name: 'Italian x2', price: '8.35$', ingredients: 'Filing: Italian, cheese, mushrooms', category: 'Meat', image: './img/italian-x2-pizza.png' },
   ];
 
   return (
@@ -315,12 +315,12 @@ function PopularPizza({ addToCart }) {
 
 function Events() {
   const events = [
-    { title: 'Awesome Cooking', image: '/img/awesome-cooking-free-pizza-for-everyone.png', description: 'Free pizza for everyone' },
-    { title: 'Two Pizza For 1 Price', image: '/img/two-pizza-for-1-price-buy-one--get-one-free.png', description: 'Buy one, get one free' },
-    { title: 'Free Coffee For 3 Pizzas', image: '/img/free-coffee-for-3-pizzas-free-coffee-with-order.png', description: 'Free coffee with order' },
-    { title: 'Our Instagram', image: '/img/our-instagram-follow-us-on-instagram.png', description: 'Follow us on Instagram' },
-    { title: 'Kitchen Tour', image: '/img/kitchen-tour-visit-our-kitchen-pizzeria.png', description: 'Visit our kitchen' },
-    { title: 'Where Are You List', image: '/img/where-are-you-list-check-our-locations-pizzeria.png', description: 'Check our locations' },
+    { title: 'Awesome Cooking', image: './img/awesome-cooking-free-pizza-for-everyone.png', description: 'Free pizza for everyone' },
+    { title: 'Two Pizza For 1 Price', image: './img/two-pizza-for-1-price-buy-one--get-one-free.png', description: 'Buy one, get one free' },
+    { title: 'Free Coffee For 3 Pizzas', image: './img/free-coffee-for-3-pizzas-free-coffee-with-order.png', description: 'Free coffee with order' },
+    { title: 'Our Instagram', image: './img/our-instagram-follow-us-on-instagram.png', description: 'Follow us on Instagram' },
+    { title: 'Kitchen Tour', image: './img/kitchen-tour-visit-our-kitchen-pizzeria.png', description: 'Visit our kitchen' },
+    { title: 'Where Are You List', image: './img/where-are-you-list-check-our-locations-pizzeria.png', description: 'Check our locations' },
   ];
 
   return (
@@ -395,7 +395,7 @@ function AboutUs() {
           transition={{ delay: 0.4, type: 'spring', stiffness: 120 }}
           viewport={{ once: true }}
         >
-          <img src="/img/kitchen-pizza-hall.png" alt="About Us Pizza" className="about-image" loading="lazy" />
+          <img src="./img/kitchen-pizza-hall.png" alt="About Us Pizza" className="about-image" loading="lazy" />
         </motion.div>
       </div>
     </motion.section>
